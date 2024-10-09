@@ -6,10 +6,6 @@
           <label for="name">Name:</label>
           <input type="text" v-model="name" required />
         </div>
-        <div>
-          <label for="userId">User ID:</label>
-          <input type="text" v-model="userId" required />
-        </div>
         <button type="submit">Create</button>
       </form>
       <p v-if="error" class="error">{{ error }}</p>
@@ -26,7 +22,6 @@
     data() {
       return {
         name: '',
-        userId: '',
         error: null,
         success: null,
       };
@@ -36,12 +31,10 @@
         try {
           const payload = {
             name: this.name,
-            userId: this.userId,
           };
           await apiClient.post('/IncomeCategory', payload);
           this.success = 'Income category created successfully!';
           this.name = '';
-          this.userId = '';
           // Optionally, redirect to the list
           this.$router.push('/');
         } catch (err) {

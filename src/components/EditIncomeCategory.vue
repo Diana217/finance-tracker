@@ -6,10 +6,6 @@
           <label for="name">Name:</label>
           <input type="text" v-model="incomeCategory.name" required />
         </div>
-        <div>
-          <label for="userId">User ID:</label>
-          <input type="text" v-model="incomeCategory.userId" required />
-        </div>
         <button type="submit">Update</button>
       </form>
       <p v-else>Loading...</p>

@@ -1,13 +1,12 @@
 <template>
     <div>
       <h1>Income Categories</h1>
-      <router-link to="/create" class="button">Add New Category</router-link>
+      <router-link to="/create-income-category" class="button">Add New Category</router-link>
       <table>
         <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>User ID</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -15,9 +14,8 @@
           <tr v-for="category in incomeCategories" :key="category.id">
             <td>{{ category.id }}</td>
             <td>{{ category.name }}</td>
-            <td>{{ category.userId }}</td>
             <td>
-              <router-link :to="`/edit/${category.id}`" class="button">Edit</router-link>
+              <router-link :to="`/edit-income-category/${category.id}`" class="button">Edit</router-link>
               <button @click="deleteCategory(category.id)" class="button">Delete</button>
             </td>
           </tr>
