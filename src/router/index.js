@@ -43,6 +43,12 @@ const routes = [
     component: UserDashboard,
     meta: { requiresAuth: true } 
   },
+  {
+    path: '/income-categories',
+    name: 'IncomeCategoryList',
+    component: IncomeCategoryList,
+    meta: { requiresAuth: true } 
+  },
 ];
 
 const router = createRouter({

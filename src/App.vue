@@ -8,7 +8,9 @@
       </nav>
     </header>
     <main>
-      <nav-component />
+      <div v-if="isAuthenticated">
+        <nav-component />
+      </div>
       <div class="content-area">
         <router-view />
       </div>
