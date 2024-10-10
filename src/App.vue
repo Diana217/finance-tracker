@@ -8,16 +8,23 @@
       </nav>
     </header>
     <main>
-      <router-view />
+      <nav-component />
+      <div class="content-area">
+        <router-view />
+      </div>
     </main>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import NavComponent from './components/NavComponent.vue';
 
 export default {
   name: 'App',
+  components: {
+    NavComponent
+  },
   computed: {
     ...mapGetters(['isAuthenticated', 'getEmail']),
   },
@@ -39,6 +46,7 @@ export default {
   --text-color: #1d3557; /* Темно-синій */
   --button-hover: #ff8b94; /* Темніший рожевий для кнопки при наведенні */
   --form-color: #f5fff3;
+  --sidebar-color: #1cbec43c;
 }
 
 #app {
@@ -94,5 +102,15 @@ nav {
 
 main {
   padding: 20px;
+  display: flex;
+  min-height: 85vh;
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 </style>
