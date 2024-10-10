@@ -1,10 +1,11 @@
 import { createStore } from 'vuex';
 import apiClient from '../services/api';
+import { jwtDecode } from 'jwt-decode';
 
 const store = createStore({
   state: {
     token: localStorage.getItem('token') || '',
-    user: null,
+    email: localStorage.getItem('email') || null,
   },
   mutations: {
     setToken(state, token) {
@@ -15,36 +16,37 @@ const store = createStore({
       state.token = '';
       localStorage.removeItem('token');
     },
-    setUser(state, user) {
-      state.user = user;
+    setEmail(state, email) {
+      state.email = email; 
+      localStorage.setItem('email', email); 
     },
-    clearUser(state) {
-      state.user = null;
+    clearEmail(state) {
+      state.email = null;
+      localStorage.removeItem('email');
     },
   },
   actions: {
     async login({ commit }, credentials) {
-        try {
+      try {
           const response = await apiClient.post('/Auth/login', credentials);
           const token = response.data.token;
           commit('setToken', token);
-      
-        //   const userResponse = await apiClient.get('/Auth/user', {
-        //     headers: {
-        //       Authorization: `Bearer ${token}`,
-        //     },
-        //   });
-        //   commit('setUser', userResponse.data);
-        } catch (error) {
+
+          const user = jwtDecode(token);
+          commit('setEmail', user.sub);
+      } catch (error) {
           console.log(error);
           throw error;
-        }
-    },      
+      }
+    },
     async register({ commit }, userData) {
       try {
         const response = await apiClient.post('/Auth/register', userData);
         const token = response.data.token;
         commit('setToken', token);
+
+        const user = jwtDecode(token);
+        commit('setEmail', user.sub);
       } catch (error) {
         console.log(error);
         throw error;
@@ -52,12 +54,12 @@ const store = createStore({
     },
     logout({ commit }) {
       commit('clearToken');
-      commit('clearUser');
+      commit('clearEmail');
     },
   },
   getters: {
     isAuthenticated: (state) => !!state.token,
-    getUser: (state) => state.user,
+    getEmail: (state) => state.email,
   },
 });
 

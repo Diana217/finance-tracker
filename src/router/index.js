@@ -12,6 +12,7 @@ const routes = [
     path: '/',
     name: 'Home',
     component: IncomeCategoryList,
+    meta: { requiresAuth: true } 
   },
   {
     path: '/create-income-category',
@@ -52,7 +53,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!store.getters.isAuthenticated) {
-      next({ name: 'Login' });
+      next({ name: 'LoginUser' });
     } else {
       next();
     }

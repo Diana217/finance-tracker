@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <header>
-      <h1>Finance Tracking App</h1>
+      <h1>Finance Tracker</h1>
+      <nav v-if="isAuthenticated">
+        <span class="welcome-message">Welcome, {{ getEmail }}</span>
+        <button class="button" @click="handleLogout">Logout</button>
+      </nav>
     </header>
     <main>
       <router-view />
@@ -10,44 +14,85 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'App',
+  computed: {
+    ...mapGetters(['isAuthenticated', 'getEmail']),
+  },
+  methods: {
+    ...mapActions(['logout']),
+    handleLogout() {
+      this.logout(); 
+      this.$router.push('/login');
+    },
+  },
 };
 </script>
 
 <style>
+:root {
+  --primary-color: #a8dadc; /* Світло-блакитний */
+  --secondary-color: #f1faee; /* Світло-зелений */
+  --accent-color: #ffb6b9; /* Пастельний рожевий */
+  --text-color: #1d3557; /* Темно-синій */
+  --button-hover: #ff8b94; /* Темніший рожевий для кнопки при наведенні */
+  --form-color: #f5fff3;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  min-height: 100vh;
 }
+
 header {
-  background-color: #42b983;
-  padding: 20px;
-  color: white;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-main {
-  margin-top: 20px;
+
+h1 {
+  margin: 0;
+  font-size: 1.8em;
+  color: var(--text-color);
 }
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.welcome-message {
+  margin-right: 15px;
+  font-size: 1em;
+  color: var(--text-color);
+}
+
 .button {
-  padding: 5px 10px;
-  background-color: #42b983;
+  padding: 8px 16px;
+  background-color: var(--accent-color);
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  text-decoration: none;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
 }
+
 .button:hover {
-  background-color: #369870;
+  background-color: var(--button-hover);
 }
-.error {
-  color: red;
-}
-.success {
-  color: green;
+
+main {
+  padding: 20px;
 }
 </style>
