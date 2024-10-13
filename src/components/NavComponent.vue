@@ -11,7 +11,7 @@
           <li class="section">
             <h4>Expenses</h4>
             <ul>
-              <li><router-link to="/expense-categories">Expense categories</router-link></li>
+              <li><router-link to="/spending-categories">Expense categories</router-link></li>
               <li><router-link to="/expenses">Expenses</router-link></li>
             </ul>
           </li>

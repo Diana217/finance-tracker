@@ -1,30 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import IncomeCategoryList from '../components/IncomeCategoryList.vue';
-import CreateIncomeCategory from '../components/CreateIncomeCategory.vue';
-import EditIncomeCategory from '../components/EditIncomeCategory.vue';
 import store from '../store';
 import LoginUser from '../components/LoginUser.vue';
 import RegisterUser from '../components/RegisterUser.vue';
 import UserDashboard from '../components/UserDashboard.vue';
+import IncomeCategoryList from '../components/IncomeCategoryList.vue';
+import CreateIncomeCategory from '../components/CreateIncomeCategory.vue';
+import EditIncomeCategory from '../components/EditIncomeCategory.vue';
+import SpendingCategoryList from '@/components/SpendingCategoryList.vue';
+import CreateSpendingCategory from '../components/CreateSpendingCategory.vue';
+import EditSpendingCategory from '@/components/EditSpendingCategory.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: IncomeCategoryList,
-    meta: { requiresAuth: true } 
-  },
-  {
-    path: '/create-income-category',
-    name: 'CreateIncomeCategory',
-    component: CreateIncomeCategory,
-    meta: { requiresAuth: true } 
-  },
-  {
-    path: '/edit-income-category/:id',
-    name: 'EditIncomeCategory',
-    component: EditIncomeCategory,
-    props: true,
+    component: UserDashboard,
     meta: { requiresAuth: true } 
   },
   { 
@@ -44,11 +34,43 @@ const routes = [
     meta: { requiresAuth: true } 
   },
   {
+    path: '/create-income-category',
+    name: 'CreateIncomeCategory',
+    component: CreateIncomeCategory,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/edit-income-category/:id',
+    name: 'EditIncomeCategory',
+    component: EditIncomeCategory,
+    props: true,
+    meta: { requiresAuth: true } 
+  },
+  {
     path: '/income-categories',
     name: 'IncomeCategoryList',
     component: IncomeCategoryList,
     meta: { requiresAuth: true } 
   },
+  {
+    path: '/create-spending-category',
+    name: 'CreateSpendingCategory',
+    component: CreateSpendingCategory,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/edit-spending-category/:id',
+    name: 'EditSpendingCategory',
+    component: EditSpendingCategory,
+    props: true,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/spending-categories',
+    name: 'SpendingCategoryList',
+    component: SpendingCategoryList,
+    meta: { requiresAuth: true }
+  }
 ];
 
 const router = createRouter({
