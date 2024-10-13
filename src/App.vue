@@ -96,6 +96,7 @@ nav {
   cursor: pointer;
   font-size: 1em;
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -114,5 +115,17 @@ main {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  text-align: center;
+  margin-top: 10px;
 }
 </style>

@@ -2,18 +2,16 @@
   <div class="content">
     <h1>Edit Income Category</h1>
     <form v-if="incomeCategory" @submit.prevent="updateCategory" class="category-form">
-      <div class="form-group">
-        <label for="name">Name</label>
+      <label for="name">Name</label>
         <div class="input-container">
           <input type="text" v-model="incomeCategory.name" required />
           <button type="submit" class="button">Update</button>
         </div>
-      </div>
     </form>
     <p v-else>Loading...</p>
     <p v-if="error" class="error">{{ error }}</p>
     <p v-if="success" class="success">{{ success }}</p>
-    <router-link to="/" class="button">Back to List</router-link>
+    <router-link to="/income-categories" class="button">Back to List</router-link>
   </div>
 </template>
 
@@ -33,7 +31,7 @@ export default {
     async fetchCategory() {
       const id = this.$route.params.id;
       try {
-        const response = await apiClient.get(`/IncomeCategory/${id}`);
+        const response = await apiClient.get(`/IncomeCategories/${id}`);
         this.incomeCategory = response.data;
       } catch (err) {
         this.error = 'Failed to fetch the income category.';
@@ -43,10 +41,10 @@ export default {
     async updateCategory() {
       try {
         const id = this.incomeCategory.id;
-        await apiClient.put(`/IncomeCategory/${id}`, this.incomeCategory);
+        await apiClient.put(`/IncomeCategories/${id}`, this.incomeCategory);
         this.success = 'Income category updated successfully!';
         // Optionally, redirect to the list
-        this.$router.push('/');
+        this.$router.push('/income-categories');
       } catch (err) {
         this.error = 'Failed to update the income category.';
         console.error(err);
@@ -78,9 +76,6 @@ h1 {
   flex-direction: column;
   justify-content: left;
   max-width: 80%;
-}
-
-.form-group {
   margin-bottom: 15px;
 }
 
@@ -102,32 +97,5 @@ input {
   border-radius: 5px;
   flex-grow: 1;
   margin-right: 10px; 
-}
-
-.button {
-  padding: 10px 15px;
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  max-width: fit-content;
-}
-
-.button:hover {
-  background-color: var(--button-hover);
-}
-
-.error {
-  color: red;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.success {
-  color: green;
-  text-align: center;
-  margin-top: 10px;
 }
 </style>

@@ -31,7 +31,7 @@ export default {
   methods: {
     async fetchIncomeCategories() {
       try {
-        const response = await apiClient.get('/IncomeCategory');
+        const response = await apiClient.get('/IncomeCategories');
         this.incomeCategories = response.data;
       } catch (err) {
         this.error = 'Failed to fetch income categories.';
@@ -41,7 +41,7 @@ export default {
     async deleteCategory(id) {
       if (!confirm('Are you sure you want to delete this category?')) return;
       try {
-        await apiClient.delete(`/IncomeCategory/${id}`);
+        await apiClient.delete(`/IncomeCategories/${id}`);
         this.incomeCategories = this.incomeCategories.filter(cat => cat.id !== id);
       } catch (err) {
         this.error = 'Failed to delete the category.';
@@ -90,26 +90,5 @@ h1 {
 .actions {
   display: flex;
   gap: 10px;
-}
-
-.button {
-  padding: 8px 12px;
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.button:hover {
-  background-color: var(--button-hover);
-}
-
-.error {
-  margin-top: 10px;
-  color: red;
-  font-weight: bold;
-  text-align: center;
 }
 </style>
