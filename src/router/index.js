@@ -9,6 +9,9 @@ import EditIncomeCategory from '../components/EditIncomeCategory.vue';
 import SpendingCategoryList from '@/components/SpendingCategoryList.vue';
 import CreateSpendingCategory from '../components/CreateSpendingCategory.vue';
 import EditSpendingCategory from '@/components/EditSpendingCategory.vue';
+import CreateIncome from '@/components/CreateIncome.vue';
+import EditIncome from '@/components/EditIncome.vue';
+import IncomeList from '@/components/IncomeList.vue';
 
 const routes = [
   {
@@ -70,7 +73,26 @@ const routes = [
     name: 'SpendingCategoryList',
     component: SpendingCategoryList,
     meta: { requiresAuth: true }
-  }
+  },
+  {
+    path: '/create-income',
+    name: 'CreateIncome',
+    component: CreateIncome,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/edit-income/:id',
+    name: 'EditIncome',
+    component: EditIncome,
+    props: true,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/income',
+    name: 'IncomeList',
+    component: IncomeList,
+    meta: { requiresAuth: true } 
+  },
 ];
 
 const router = createRouter({

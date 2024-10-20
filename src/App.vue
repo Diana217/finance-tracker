@@ -76,6 +76,20 @@ h1 {
   color: var(--text-color);
 }
 
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+}
+
+select, input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-grow: 1;
+  margin-right: 10px; 
+}
+
 nav {
   display: flex;
   align-items: center;
@@ -103,6 +117,11 @@ nav {
   background-color: var(--button-hover);
 }
 
+.add-button {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
 main {
   padding: 20px;
   display: flex;
@@ -115,6 +134,11 @@ main {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
 }
 
 .error {

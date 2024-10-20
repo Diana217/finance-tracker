@@ -78,23 +78,9 @@ h1 {
   margin-bottom: 15px;
 }
 
-label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  display: block;
-}
-
 .input-container {
   display: flex; 
   align-items: center;
   margin-bottom: 20px;
-}
-
-input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  flex-grow: 1;
-  margin-right: 10px; 
 }
 </style>

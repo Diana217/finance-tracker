@@ -87,6 +87,7 @@ label {
   display: block;
   margin-bottom: 5px;
   color: var(--text-color);
+  font-weight: normal;
 }
 
 input {
