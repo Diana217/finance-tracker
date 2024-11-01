@@ -28,6 +28,8 @@
     border-right: 1px solid #ccc;
     display: flex;
     align-items: flex-start;
+    max-height: 100%;
+    height: 550px;
 }
 
 ul {

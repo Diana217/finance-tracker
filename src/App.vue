@@ -42,13 +42,13 @@ export default {
 
 <style>
 :root {
-  --primary-color: #a8dadc; /* Світло-блакитний */
-  --secondary-color: #f1faee; /* Світло-зелений */
-  --accent-color: #ffb6b9; /* Пастельний рожевий */
-  --text-color: #1d3557; /* Темно-синій */
-  --button-hover: #ff8b94; /* Темніший рожевий для кнопки при наведенні */
-  --form-color: #f5fff3;
-  --sidebar-color: #1cbec43c;
+  --primary-color: #E5D9F2; 
+  --secondary-color: #F5EFFF; 
+  --accent-color: #A594F9;
+  --text-color: #333333;
+  --button-hover: #8168ff; 
+  --form-color: #faf7ff;
+  --sidebar-color: #e9d9f7;
 }
 
 #app {
