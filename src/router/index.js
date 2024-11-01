@@ -12,6 +12,9 @@ import EditSpendingCategory from '@/components/EditSpendingCategory.vue';
 import CreateIncome from '@/components/CreateIncome.vue';
 import EditIncome from '@/components/EditIncome.vue';
 import IncomeList from '@/components/IncomeList.vue';
+import CreateExpense from '@/components/CreateExpense.vue';
+import EditExpense from '@/components/EditExpense.vue';
+import ExpensesList from '@/components/ExpensesList.vue';
 
 const routes = [
   {
@@ -91,6 +94,25 @@ const routes = [
     path: '/income',
     name: 'IncomeList',
     component: IncomeList,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/create-expense',
+    name: 'CreateExpense',
+    component: CreateExpense,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/edit-expense/:id',
+    name: 'EditExpense',
+    component: EditExpense,
+    props: true,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/expenses',
+    name: 'ExpensesList',
+    component: ExpensesList,
     meta: { requiresAuth: true } 
   },
 ];
