@@ -2,6 +2,12 @@
     <nav class="sidebar">
         <ul>
           <li class="section">
+            <h4>Report</h4>
+            <ul>
+              <li><router-link to="/dashboard">Dashboard</router-link></li>
+            </ul>
+          </li>
+          <li class="section">
             <h4>Income</h4>
             <ul>
               <li><router-link to="/income-categories">Income categories</router-link></li>
@@ -28,8 +34,7 @@
     border-right: 1px solid #ccc;
     display: flex;
     align-items: flex-start;
-    max-height: 100%;
-    height: 550px;
+    height: 92%;
 }
 
 ul {
