@@ -15,6 +15,9 @@ import IncomeList from '@/components/IncomeList.vue';
 import CreateExpense from '@/components/CreateExpense.vue';
 import EditExpense from '@/components/EditExpense.vue';
 import ExpensesList from '@/components/ExpensesList.vue';
+import CreateFinancialGoal from '@/components/CreateFinancialGoal.vue';
+import EditFinancialGoal from '@/components/EditFinancialGoal.vue';
+import FinancialGoalList from '@/components/FinancialGoalList.vue';
 
 const routes = [
   {
@@ -113,6 +116,25 @@ const routes = [
     path: '/expenses',
     name: 'ExpensesList',
     component: ExpensesList,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/create-financial-goal',
+    name: 'CreateFinancialGoal',
+    component: CreateFinancialGoal,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/edit-financial-goal/:id',
+    name: 'EditFinancialGoal',
+    component: EditFinancialGoal,
+    props: true,
+    meta: { requiresAuth: true } 
+  },
+  {
+    path: '/financial-goals',
+    name: 'FinancialGoalList',
+    component: FinancialGoalList,
     meta: { requiresAuth: true } 
   },
 ];

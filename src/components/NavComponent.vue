@@ -21,7 +21,12 @@
               <li><router-link to="/expenses">Expenses</router-link></li>
             </ul>
           </li>
-          <!-- Add more sections as needed -->
+          <li class="section">
+            <h4>Savings</h4>
+            <ul>
+              <li><router-link to="/financial-goals">Financial goals</router-link></li>
+            </ul>
+          </li>
         </ul>
     </nav>
 </template>
