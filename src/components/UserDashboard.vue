@@ -26,11 +26,20 @@
 
           <!-- Savings Progress Bar -->
           <div class="grid-item chart-container">
-              <h2>Savings Progress</h2>
-              <div class="progress-bar">
-                  <div class="progress" :style="{ width: `${savingsPercentage}%` }"></div>
+            <h2>Savings Goals Progress</h2>
+            <div v-for="goal in financialGoals" :key="goal.id" class="goal-progress">
+              <h4 class="goal-name">{{ goal.name }}</h4>
+              <div class="progress-bar" 
+                :title="`${calculateProgress(goal)}% reached`">
+                <div class="progress"
+                  :style="{ width: `${calculateProgress(goal)}%` }"
+                ></div>
               </div>
-              <p>{{ savingsPercentage }}% of goal reached</p>
+              <div class="goal-amounts">
+                <span>{{ formatNumber(getCurrentSavings(goal)) }}</span>
+                <span>{{ formatNumber(goal.targetAmount) }}</span>
+              </div>
+            </div>
           </div>
       </div>
   </div>
@@ -52,7 +61,8 @@ export default {
           },
           spendingBreakdownData: [],
           cashFlowData: [],
-          savingsPercentage: 0
+          financialGoals: [],
+          savings: [],
       };
   },
   methods: {
@@ -191,6 +201,7 @@ export default {
         }
       });
     },
+
     calculateCashFlowData() {
       const aggregated = {};
 
@@ -216,9 +227,35 @@ export default {
         return values.income - values.expenses;
       });
     },
-    fetchSavingsProgress() {
-        this.savingsPercentage = 72; 
+
+    calculateProgress(goal) {
+      const savedAmount = this.getCurrentSavings(goal);
+      return ((savedAmount / goal.targetAmount) * 100).toFixed(1);
     },
+
+    getCurrentSavings(goal) {
+      const savingsForGoal = this.savings
+        .filter(s => s.goalId === goal.id)
+        .reduce((total, s) => total + s.amount, 0);
+      return savingsForGoal;
+    },
+
+    async fetchGoalsAndSavings() {
+      try {
+        const goalsResponse = await apiClient.get('/FinancialGoals');
+        this.financialGoals = goalsResponse.data;
+        
+        const savingsResponse = await apiClient.get('/Savings');
+        this.savings = savingsResponse.data;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    },
+
+    formatNumber(amount) {
+      return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    
     async fetchIncome() {
             try {
                 const response = await apiClient.get('/Incomes');
@@ -248,11 +285,11 @@ export default {
             }
         }
       },
+
       async mounted() {
         try {
-          await Promise.all([this.fetchIncome(), this.fetchExpenses()]);
+          await Promise.all([this.fetchIncome(), this.fetchExpenses(), this.fetchGoalsAndSavings()]);
           this.calculateCashFlowData();
-          this.fetchSavingsProgress();
           this.renderIncomeExpensesChart();
           this.renderSpendingBreakdownChart();
           this.renderCashFlowChart();
@@ -300,18 +337,42 @@ h1 {
     box-sizing: border-box;
 }
 
+.goal-progress {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.goal-progress h4 {
+  text-align: left;
+  margin: 0;
+  font-weight: normal;
+  color: #333;
+}
+
 .progress-bar {
-    width: 100%;
-    background-color: #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    height: 24px;
-    margin-top: 10px;
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 20px;
+  margin: 5px 0;
 }
 
 .progress {
-    height: 100%;
-    background-color: #4CAF50;
+  height: 100%;
+  background-color: #4CAF50;
+  transition: width 0.3s;
+}
+
+.goal-amounts {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.goal-amounts span {
+  margin-top: 5px;
 }
 
 .pie {
