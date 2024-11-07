@@ -25,6 +25,7 @@
             <h4>Savings</h4>
             <ul>
               <li><router-link to="/financial-goals">Financial goals</router-link></li>
+              <li><router-link to="/savings">Savings</router-link></li>
             </ul>
           </li>
         </ul>
