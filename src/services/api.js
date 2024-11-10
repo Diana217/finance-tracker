@@ -33,3 +33,29 @@ apiClient.interceptors.response.use(
 );
 
 export default apiClient;
+
+export const apiService = {
+  async fetchSpendingCategories() {
+    return apiClient.get('/SpendingCategories');
+  },
+  
+  async fetchExpenses() {
+    return apiClient.get('/Expenses');
+  },
+
+  async fetchExpense(id) {
+    return apiClient.get(`/Expenses/${id}`);
+  },
+
+  async createExpense(payload) {
+    return apiClient.post('/Expenses', payload);
+  },
+
+  async updateExpense(id, expense) {
+    return apiClient.put(`Expenses/${id}`, expense);
+  },
+
+  async deleteExpense(id) {
+    return apiClient.delete(`/Expenses/${id}`);
+  },
+};

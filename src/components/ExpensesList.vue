@@ -30,7 +30,7 @@
     </div>
 </template>
 <script>
-import apiClient from '../services/api';
+import { apiService } from '../services/api';
 
 export default {
     name: 'ExpensesList',
@@ -40,9 +40,9 @@ export default {
         };
     },
     methods: {
-        async fetchExpenses() {
+        async loadExpenses() {
             try {
-                const response = await apiClient.get('/Expenses');
+                const response = await apiService.fetchExpenses();
                 this.expenses = response.data.map(expense => {
                     if (expense.date) {
                         expense.date = expense.date.split('T')[0];
@@ -57,7 +57,7 @@ export default {
         async deleteExpense(id) {
             if (!confirm('Are you sure you want to delete this expense?')) return;
             try {
-                await apiClient.delete(`/Expenses/${id}`);
+                await apiService.deleteExpense(id);
                 this.expenses = this.expenses.filter(exp => exp.id !== id);
             } catch (err) {
                 this.error = 'Failed to delete expense.';
@@ -66,7 +66,7 @@ export default {
         }
     },
     mounted() {
-        this.fetchExpenses();
+        this.loadExpenses();
     },
 }
 </script>

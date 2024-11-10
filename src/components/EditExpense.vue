@@ -18,7 +18,7 @@
     </div>
 </template>
 <script>
-import apiClient from '../services/api';
+import { apiService } from '../services/api';
 
 export default {
     name: 'EditExpense',
@@ -32,7 +32,7 @@ export default {
         async fetchExpense() {
             const id = this.$route.params.id;
             try {
-                const response = await apiClient.get(`/Expenses/${id}`);
+                const response = await apiService.fetchExpense(id);
                 this.expense = response.data;
                 if (this.expense.date) {
                     this.expense.date = this.expense.date.split('T')[0];
@@ -44,7 +44,7 @@ export default {
         },
         async fetchCategories() {
             try {
-                const response = await apiClient.get('SpendingCategories');
+                var response = await apiService.fetchSpendingCategories();
                 this.categories = response.data; 
 
                 if (this.categories.length > 0) {
@@ -58,7 +58,7 @@ export default {
         async updateExpense() {
             try {
                 const id = this.expense.id;
-                await apiClient.put(`Expenses/${id}`, this.expense);
+                await apiService.updateExpense(id, this.expense);
                 this.$router.push('/expenses');
             } catch (err) {
                 this.error = 'Failed to edit expense.';

@@ -18,7 +18,7 @@
     </div>
 </template>
 <script>
-import apiClient from '../services/api';
+import { apiService } from '../services/api';
 
 export default {
     name: 'CreateExpense',
@@ -33,7 +33,7 @@ export default {
     methods: {
         async fetchCategories() {
             try {
-                var response = await apiClient.get('/SpendingCategories');
+                var response = await apiService.fetchSpendingCategories();
                 this.categories = response.data;
 
                 if (this.categories.length > 0) {
@@ -51,7 +51,7 @@ export default {
                     amount: this.amount,
                     date: this.date,
                 };
-                await apiClient.post('/Expenses', payload);
+                await apiService.createExpense(payload);
                 this.$router.push('/expenses');
             } catch (err) {
                 this.error = 'Failed to add expense.';
