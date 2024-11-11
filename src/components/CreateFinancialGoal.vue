@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="form-container">
         <h1>Create New Financial Goal</h1>
         <form @submit.prevent="createGoal" class="create-form">
             <label for="name" class="text">Name</label>
@@ -56,14 +56,6 @@ export default {
 </script>
 
 <style scoped>
-.content {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: left;
-}
-
 h1 {
     margin-bottom: 20px;
     text-align: center;
@@ -71,18 +63,5 @@ h1 {
 
 select, input {
     margin-bottom: 20px;
-}
-
-.create-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin-bottom: 15px;
-}
-
-.submit-button {
-    display: block;
-    margin-bottom: 20px;
-    width: fit-content;
 }
 </style>

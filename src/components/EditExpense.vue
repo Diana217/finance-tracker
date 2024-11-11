@@ -1,7 +1,7 @@
 <template>
-    <div class="content">
+    <div class="form-container">
         <h1>Edit Expense</h1>
-        <form v-if="expense" @submit.prevent="updateExpense" class="expense-form">
+        <form v-if="expense" @submit.prevent="updateExpense" class="edit-form">
             <label for="category" class="text">Category</label>
             <div class="dropdown">
                 <select name="category" v-model="expense.categoryId">
@@ -73,14 +73,6 @@ export default {
 }
 </script>
 <style scoped>
-.content {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: left;   
-}
-
 h1 {
   margin-bottom: 20px;
   text-align: center;
@@ -88,18 +80,5 @@ h1 {
 
 select, input {
     margin-bottom: 20px;
-}
-
-.expense-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin-bottom: 15px;
-}
-
-.submit-button {
-    display: block;
-    margin-bottom: 20px;
-    width: fit-content;
 }
 </style>

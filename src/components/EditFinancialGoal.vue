@@ -1,7 +1,7 @@
 <template>
-    <div class="content">
+    <div class="form-container">
       <h1>Edit Financial Goal</h1>
-      <form v-if="goal" @submit.prevent="updateGoal" class="goal-form">
+      <form v-if="goal" @submit.prevent="updateGoal" class="edit-form">
         <label for="name" class="text">Name</label>
         <input type="text" v-model="goal.name" required />
         <label for="targetAmount" class="text">Target Amount</label>
@@ -61,15 +61,7 @@
   };
   </script>
   
-  <style scoped>
-  .content {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: left;
-  }
-  
+<style scoped>
   h1 {
     margin-bottom: 20px;
     text-align: center;
@@ -78,17 +70,4 @@
   select, input {
     margin-bottom: 20px;
 }
-
-.goal-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin-bottom: 15px;
-}
-
-.submit-button {
-    display: block;
-    margin-bottom: 20px;
-    width: fit-content;
-}
-  </style>
+</style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="content-list">
         <h1>Income</h1>
         <div class="add-button">
             <router-link to="/create-income" class="button">Add an income</router-link>
@@ -71,31 +71,4 @@ export default {
 }
 </script>
 <style scoped>
-.content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse; 
-}
-
-tr {
-  display: table-row;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-th, td {
-  padding: 10px 20px; 
-  text-align: left;
-}
-
-td:last-child {
-    display: inline-table;
-    text-align: right;
-    margin: 7px 0 7px 20px;
-}
 </style>

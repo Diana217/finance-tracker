@@ -122,6 +122,12 @@ nav {
   margin-bottom: 20px;
 }
 
+.submit-button {
+    display: block;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
 main {
   padding: 20px;
   display: flex;
@@ -134,6 +140,84 @@ main {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin-bottom: 15px;
+}
+
+.category-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  max-width: 80%;
+  margin-bottom: 15px;
+}
+
+.input-container {
+  display: flex; 
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin-bottom: 15px;
+}
+
+.content-list {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+tr {
+  display: table-row;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th, td {
+  padding: 10px 20px; 
+  text-align: left;
+}
+
+td:last-child {
+    display: inline-table;
+    text-align: right;
+    margin: 7px 0 7px 20px;
 }
 
 .actions {

@@ -1,5 +1,5 @@
 <template>
-  <div class="content dashboard">
+  <div class="content-list dashboard">
       <h1>Dashboard</h1>
 
       <!-- Charts and Progress Bar in 2x2 Grid -->
@@ -303,13 +303,6 @@ export default {
 <style scoped>
 h1 {
   padding-bottom: 20px;
-}
-
-.content {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
 }
 
 .grid-container {

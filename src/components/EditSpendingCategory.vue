@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="form-container">
       <h1>Edit Spending Category</h1>
       <form v-if="spendingCategory" @submit.prevent="updateCategory" class="category-form">
         <label for="name">Name</label>
@@ -57,30 +57,8 @@ export default {
 </script>
 
 <style scoped>
-.content {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: left;
-}
-
 h1 {
   margin-bottom: 20px;
   text-align: center;
-}
-
-.category-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  max-width: 80%;
-  margin-bottom: 15px;
-}
-
-.input-container {
-  display: flex; 
-  align-items: center;
-  margin-bottom: 20px;
 }
 </style>
