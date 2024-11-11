@@ -4,14 +4,14 @@
         <form @submit.prevent="createExpense" class="create-form">
             <label for="category" class="text">Category</label>
             <div class="dropdown">
-                <select name="category" v-model="categoryId">
+                <select name="category" v-model="categoryId" id="category">
                     <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
                 </select>
             </div>
             <label for="amount" class="text">Amount</label>
-            <input type="number" v-model="amount" required>
+            <input type="number" v-model="amount" id="amount" required>
             <label for="date" class="text">Date</label>
-            <input type="date" v-model="date">
+            <input type="date" v-model="date" id="date">
             <button type="submit" class="button submit-button">Create</button>
         </form>
         <router-link to="/expenses" class="button">Back to list</router-link>

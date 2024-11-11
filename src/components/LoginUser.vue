@@ -4,20 +4,21 @@
     <form @submit.prevent="loginUser">
       <div>
         <label for="username">Username</label>
-        <input type="text" v-model="username" required />
+        <input type="text" v-model="username" id="username" required />
       </div>
       <div class="password-field">
         <label for="password">Password</label>
         <input 
           :type="passwordVisible ? 'text' : 'password'" 
           v-model="password" 
+          id="password"
           required 
         />
         <span class="toggle-password" @click="togglePasswordVisibility">
           <i :class="passwordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
         </span>
       </div>
-      <button type="submit" class="button">Login</button>
+      <button type="submit" class="button" id="loginButton">Login</button>
     </form>
     <div class="or-text">OR</div>
     <button class="register-button" @click="goToRegister">Register</button>
